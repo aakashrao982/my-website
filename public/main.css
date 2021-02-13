@@ -1,13 +1,22 @@
+#fullpage
+{
+    background-color: white;
+}
+
 video {
     transform: rotateY(180deg); 
+    border-radius: 115px;
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 .select {
     height: 30px;
+    width: 50%;
+    
 }
 
 .h-90 {
-    height: 90% !important;
+    height: 78% !important;
 }
 
 .h-10 {
@@ -24,4 +33,19 @@ video {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+#filter
+{
+    background-color: rgba(0, 0, 0, 0.7);
+    font-family: 'Trebuchet MS';
+    margin-left: 30px;
+}
+#welcome
+{
+    font-size: 50px;
+    font-family: serif;
+    color: rgb(247, 166, 16);
+    font-weight: 100;
+    text-align: center;
 }
