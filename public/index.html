@@ -3,6 +3,7 @@
 <head>
 	<title>AAKASHN khola</title>
 	<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link href="main.css" rel="stylesheet">
 </head>
 <body>
 
@@ -14,12 +15,12 @@
       <span class="ml-3 text-xl">AAKASH KHOLA</span>
     </a>
     <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-      <a class="mr-5 hover:text-gray-900" href="connect.html">connect Me and send "hello"</a>
-      <a class="mr-5 hover:text-gray-900" href="connect.html">dont'press</a>
+      <a class="mr-5 hover:text-gray-900" href="">connect Me and send "hello"</a>
+      <a class="mr-5 hover:text-gray-900" href="">dont'press</a>
       <a class="mr-5 hover:text-gray-900">Third Link</a>
       <a class="mr-5 hover:text-gray-900">Fourth Link</a>
     </nav>
-    <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">don't press
+    <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0" onclick="document.getElementById('id01').style.display='block'" style="width:auto; background-color: rgb(104,100,244);">V call with Aakash
       <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
         <path d="M5 12h14M12 5l7 7-7 7"></path>
       </svg>
@@ -28,11 +29,66 @@
 </header>
 
 
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate" action="/action_page.php" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" id="usrname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" id="pswd" required>
+        
+      <button type="button" onclick="authenticate()">Authenticate Yourself </button>
+      <label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  // Get the modal
+  var modal = document.getElementById('id01');
+
+  function authenticate()
+  {
+
+    var username = document.getElementById("usrname").value;
+    var pwsdd = document.getElementById("pswd").value;
+    if(username=="aakashkhola")
+    {
+        if(pwsdd=="aakash@1234")
+        {
+          //alert("Hello, World!" + username);
+            window.open("connect.html"); 
+        }
+    }
+}
+  
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
+  </script>
+
+
+
+
+
 <section class="text-gray-600 body-font">
   <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
     <img class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="hero" src="photo_2021-02-08 21.04.52.jpeg">
     <div class="text-center lg:w-2/3 w-full">
-      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">CONVERTING CAFFEINE TO CODE</h1>
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">CONVERTING CAFINE TO CODE</h1>
       <p class="mb-8 leading-relaxed">Here you'll get all small codes and importent tool which help in cp<br> MODLUAR CODE</p>
       <div class="flex justify-center">
         <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">CP</button>
@@ -78,6 +134,10 @@
     </div>
   </div>
 </section>
+
+
+
+
 
 
 <section class="text-gray-600 body-font">
@@ -130,10 +190,10 @@
         <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">SOCIAL MEDIA</h2>
         <nav class="list-none mb-10">
           <li>
-            <a class="text-gray-600 hover:text-gray-800" href="https://www.instagram.com/aakash_companyyy/">INSTAGRAM</a>
+            <a class="text-gray-600 hover:text-gray-800" href="https://www.instagram.com/aakash_company/">INSTAGRAM</a>
           </li>
           <li>
-            <a class="text-gray-600 hover:text-gray-800" href="https://t.me/aakash_companyyy">TELEGRAM</a>
+            <a class="text-gray-600 hover:text-gray-800" href="https://t.me/aakash_company">TELEGRAM</a>
           </li>
           <li>
             <a class="text-gray-600 hover:text-gray-800">Third Link</a>
