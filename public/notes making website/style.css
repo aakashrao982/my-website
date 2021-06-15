@@ -1,0 +1,12 @@
+.selector-for-some-widget {
+    box-sizing: content-box;
+  }
+
+.dark_modee{
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+body
+{
+  background-image: url("resource/getty_637326878_2000117118188430184_279676.jpeg");
+}
