@@ -76,6 +76,11 @@ var intervalId = window.setInterval(function () {
 //////////////////       stopwatch------------------------------------------------------------------
 
 function display_stopwatch() {
+    let h1 = 0, m1 = 0;
+    h1 = Math.floor(h);
+    console.log(m1);
+    m1 = Math.floor(m);
+    let counter = document.getElementById("counter").innerHTML = `     ${h1} : ${m1} : ${s}    `;
     let counter = document.getElementById("counter").innerHTML = `     ${h} : ${m} : ${s}    `;
 }
 var status = 0, c = 0, time_id = 0, h = 0, s = 0, m = 0, lap_count = 0, prev_lap_count = 0, max_s = 0;
