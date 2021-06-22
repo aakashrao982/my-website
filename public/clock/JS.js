@@ -105,6 +105,8 @@ function intcremet_s() {
                 m = m % 60;
             }
             s = s % 60;
+            m1 = Math.floor(m1);
+        h1 = Math.floor(h1)
         }
         s = Number(s);
         m = Number(m);
