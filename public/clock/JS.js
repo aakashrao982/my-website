@@ -1,133 +1,228 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-  <title>Aakash' cloCk</title>
-  <link rel="stylesheet" href="CSS.css">
-  <link rel="shortcut icon" type="image/jpg"
-    href="https://i.pinimg.com/originals/92/13/df/9213df2e7622e767f9fd09fcd656c5cb.jpg">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+var t = 0;
 
-  
+document.getElementById("chg_fmt").addEventListener("click", function () {
+    t = 1;
+})
+document.getElementById("clk").addEventListener("click", function () {
+    t = 0;
+    console.log("hello")
+})
 
+document.getElementById("alrm_btn").addEventListener("click", function () {
+    t = 2;
+})
 
-</head>
+function display_t1(d) {
 
-<body>
+    document.getElementsByTagName("body")[0].style.backgroundImage = "url('day.png')"
+    document.getElementById("chg_fmt").className = "nav-link";
+    document.getElementById("clk").className = "nav-link active";
+    document.getElementById("alrm_btn").className = "nav-link";
+    document.getElementById("showing_content").style.color = "black";
 
-  <ul class="nav nav-pills nav-fill">
-    <li class="nav-item">
-      <a class="nav-link active" aria-current="page" id="clk">CloCk</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="chg_fmt">Change ForMat</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="alrm_btn">Stop_Watch</a>
-    </li>
-  </ul>
+    let hrs = d.getHours();
+    let minn = d.getMinutes();
+    let sec = d.getSeconds();
+    document.getElementById("hours").innerText = hrs;
+    document.getElementById("minutes").innerText = minn;
+    document.getElementById("seconds").innerText = sec;
+}
 
+function display_t2(d) {
 
-  <div class="container container-sm" id="showing_content">
-    <div class="container mx-4" , id="clock">
-      <span class="" id="hours">4</span>
-      <span style="font-size: 20vw;">:</span>
-      <span class="" id="minutes">5</span>
-      <span style="font-size: 20vw;">:</span>
-      <span class="" id="seconds">7</span>
+    let hrs = d.getHours();
+    if (hrs > 12) {
+        hrs -= 12;
+        document.getElementsByTagName("body")[0].style.backgroundImage = "url('night.png')"
+        document.getElementById("showing_content").style.color = "#c2c2a3";
+    }
+    document.getElementById("chg_fmt").className = "nav-link active";
+    document.getElementById("clk").className = "nav-link";
+    document.getElementById("alrm_btn").className = "nav-link";
 
-    </div>
+    let minn = d.getMinutes();
+    let sec = d.getSeconds();
+    document.getElementById("hours").innerText = hrs;
+    document.getElementById("minutes").innerText = minn;
+    document.getElementById("seconds").innerText = sec;
+}
 
-    <div id="change_fmt" class="container">
-      <img src="" alt="">
-    </div>
-
-    <pre>
-</pre>
-
-    <div id="stop_watch" class="container container-sm">
-
-      <div class="container container-sm" id="st_content" style="padding-left: 3vm; padding-right: 3vm;">
-        <div class="card" style="width: 89vw;">
-          <ul class="list-group list-group-flush" >
-            <div class="card" style="font-size: 2vw; color: #bd3029;">
-              Graph 
-              <div class="card-body" id="cannvas">
-                <canvas id="myChart" width="70vw" height="330" aria-level="chart" role="img"></canvas>
-              </div>
-            </div>
-            
-            <div class="container" id="chartContainer" >
-              <hr>
-                
-            </div>
-            <!pre style="font-size: 2vw;">
-            </pre>
-            
-            <li class="list-group-item" id="counter" style="height: 150px;">counter</li>
-            <button type="button" id="startbtn" class="btn btn-primary btn-lg">start/stop</button>
-              <button type="button" id="resetbtn" class="btn btn-secondary btn-lg">Reset</button>
-              <button type="button" id="lapbtn" class="btn btn-secondary btn-lg">Lap</button>
-            <li class="list-group-item" id="laps" style="list-style : none;">
-              <div class="container overflow-auto" id="laps_show" style="height: 400px;">
-                <h2>Laps</h2>
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col" style="font-size: 2vw;">Sequence</th>
-                      <th scope="col" style="font-size: 2vw;">Time Interval</th>
-
-                    </tr>
-                  </thead>
-                  <tbody id="lap_body">
-                    <tr>
-
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </li>
-
-          </ul>
-        </div>
-      </div>
+function display_t3() {
+    document.getElementById("chg_fmt").className = "nav-link";
+    document.getElementById("alrm_btn").className = "nav-link active";
+    document.getElementById("clk").className = "nav-link";
 
 
 
-
-    </div>
-
-  </div>
+}
 
 
+var intervalId = window.setInterval(function () {
+    let d = new Date();
+    if (t == 1) {
+        display_t2(d);
+    }
+    else if (t == 0) {
+        display_t1(d);
+    }
+    else if (t == 2) {
+        display_t3();
+    }
+
+
+}, 1000);
+
+//////////////////       stopwatch------------------------------------------------------------------
+
+function display_stopwatch() {
+    let counter = document.getElementById("counter").innerHTML = `     ${h} : ${m} : ${s}    `;
+}
+var status = 0, c = 0, time_id = 0, h = 0, s = 0, m = 0, lap_count = 0, prev_lap_count = 0, max_s = 0;
+
+
+document.getElementById("startbtn").addEventListener("click", function () {
+    if (status == 0) {
+        status = 1;
+        time_id = setInterval(intcremet_s, 1000);
+    }
+    else {
+        status = 0;
+        clearInterval(time_id);
+    }
+})
+
+function intcremet_s() {
+    if (status == 1) {
+
+        //let h = 0, m = 0, s = 0
+        s = c;
+        c++;
+        if (s >= 60) {
+            m = s / 60;
+            if (m >= 60) {
+                h = m / 60;
+                m = m % 60;
+            }
+            s = s % 60;
+        }
+        s = Number(s);
+        m = Number(m);
+        h = Number(h);
+        display_stopwatch();
+    }
+    //intcremet_s();
+}
+
+document.getElementById("resetbtn").addEventListener("click", function () {
+    display_stopwatch(0, 0, 0);
+    document.getElementById("lap_body").innerHTML = "";
+    clearInterval(time_id);
+    h = 0;
+    s = 0
+    m = 0
+    c = 0;
+    laps_value = [];
+    x_lable = [];
+    display_chart();
+})
+
+
+
+document.getElementById("lapbtn").addEventListener("click", function () {
+    console.log("hi")
+    lap_count++;
+
+    x_lable.push(lap_count);         // for graph
+    laps_value.push(c - prev_lap_count);
+    // destroying canvas
+    display_chart();
+    //printing chart
+
+    let h1 = 0, m1 = 0, s1 = 0;
+    s1 = c - prev_lap_count;
+    prev_lap_count = c;
+
+    if (s1 >= 60) {
+        m1 = s1 / 60;
+        if (m1 >= 60) {
+            h1 = m1 / 60;
+            m1 = m1 % 60;
+        }
+        s1 = s1 % 60;
+    }
+    let str = `
+                  <tr>
+                    <th scope="row" style="font-size: 1.5vw;">${lap_count}</th>
+                    <td style="font-size: 1.5vw;">${h1} : ${m1} : ${s1}</td>
+                  </tr>
+                </tbody>
+   `
+    let person = {
+        y: s1,
+        indexLabel: "",
+        markerColor: ""
+    };
+    localStorage.setItem("lap_count", JSON.stringify(person));
+
+    document.getElementById("lap_body").innerHTML += str;
+
+});
+
+
+
+///  graph
+var x_lable = [];
+const laps_value = [];
 
 
 
 
+function display_chart() {
+
+    // var oldcanv = document.getElementById('cannvas');
+    // document.removeChild(oldcanv)
+
+    // var canv = document.createElement('canvas');
+    // canv.id = 'myChart';
+    // canv.width="400";
+    // canv.height="400";
+    // canv.role="img";
+    // document.body.appendChild(canv);
+
+    document.getElementById("myChart").remove();
+    document.getElementById("cannvas").innerHTML=`<canvas id="myChart" width="75vw" height="25vw" aria-level="chart" role="img"></canvas>`
 
 
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
-    integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
-    crossorigin="anonymous"></script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    //ctx.clearRect(0, 0, document.getElementById('myChart').width, document.getElementById('myChart').height);
+    var myChart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: x_lable,
+            datasets: [{
+                label: 'Laps Time Period',
+                data: laps_value,  //  customable data
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        },
 
-  <script src="chart.js"></script>
-  <! graph>
-    <script>
-      
-    </script>
-    <script src="JS.js"></script>
-</body>
+    });
+}
 
-</html>
+
